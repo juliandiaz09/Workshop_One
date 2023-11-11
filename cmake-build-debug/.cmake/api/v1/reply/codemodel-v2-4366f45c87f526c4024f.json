@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/A372144/Downloads/Git/Workshop_One/cmake-build-debug",
-		"source" : "C:/Users/A372144/Downloads/Git/Workshop_One"
+		"build" : "D:/programas/CLionProyects/Workshop_One/cmake-build-debug",
+		"source" : "D:/programas/CLionProyects/Workshop_One"
 	},
 	"version" : 
 	{
