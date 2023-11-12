@@ -16,12 +16,12 @@ bool validNumber(int number) {
 void numberToRoman(int number) {
     int number2 = number;
     if (!validNumber(number)) {
-        printf("NO valido.\n");
+        printf("Not valid.\n");
         return;
     }
 
     // Arrays para los símbolos romanos y sus valores correspondientes
-    const char* roman[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    const char *roman[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
     int romanValues[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
 
     // Construir el número romano
@@ -41,7 +41,7 @@ void numberToRoman(int number) {
     }
 
     // Imprimir el número romano
-    printf("Numero romano de %d es %s\n",number2,romanNumber);
+    printf("Roman number of %d is %s\n", number2, romanNumber);
 }
 
 
@@ -71,7 +71,8 @@ void primeFactors(int number) {
         }
     }
 
-    if (exponent > 0) { // Al final, si todavía tenemos un exponente mayor que 0, significa que el último factor era primo.
+    if (exponent >
+        0) { // Al final, si todavía tenemos un exponente mayor que 0, significa que el último factor era primo.
         printf("%d^%d", factor, exponent); // Imprimimos el último factor primo y su exponente.
     }
 
@@ -114,62 +115,62 @@ void properName(char *string) {
 bool verifyEgolatet(int egolater) {
     int digito = 0, aux = egolater, sum = 0;
 
-    while (aux > 0){
+    while (aux > 0) {
         digito = aux % 10;
         int powDigito = pow(digito, 3);
         sum += powDigito;
         aux /= 10;
     }
 
-    if(egolater == sum){
-        printf("hola si es un egolatra igual que mi ex");
+    if (egolater == sum) {
+        printf("Hello, it is an egomaniac number just like my ex");
         return true;
-    } else{
-        printf("Este si vale la pena cariño");
+    } else {
+        printf("This one is worth it, darling");
         return false;
     }
 }
 
-int numberDivisors(int  number){
+int numberDivisors(int number) {
     int i, sum = 0;
 
-    for(i = 1; i < number; i++){
-        if((number % i) == 0){
+    for (i = 1; i < number; i++) {
+        if ((number % i) == 0) {
             sum += i;
         }
     }
     return sum;
 }
 
-bool verifyFriendsNumber(int  numberOne, int numberTwo){
+bool verifyFriendsNumber(int numberOne, int numberTwo) {
     int sum = 0;
 
     sum = numberDivisors(numberOne);
 
-    if(sum == numberTwo){
+    if (sum == numberTwo) {
         sum = numberDivisors(numberTwo);
-        if(sum == numberOne){
-            printf("Somos amix");
+        if (sum == numberOne) {
+            printf("We are friends");
             return true;
         }
-    }else{
-        printf("Te odixxx");
+    } else {
+        printf("I hate you");
         return false;
     }
 }
 
-const char* nameMoths[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                           "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+const char *nameMoths[] = {"January", "February", "March", "April", "May", "June",
+                           "July", "August", "September", "October", "November", "December"};
 
-bool esBisiesto(int year) {
+bool isLeapYear(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-void describeDate(const char* date) {
+void describeDate(const char *date) {
     int day, month, year;
     if (sscanf(date, "%d/%d/%d", &day, &month, &year) == 3 &&
         month >= 1 && month <= 12 &&
-        day >= 1 && day <= (month == 2 && esBisiesto(year) ? 29 : (31 - (month - 1) % 7 % 2))) {
+        day >= 1 && day <= (month == 2 && isLeapYear(year) ? 29 : (31 - (month - 1) % 7 % 2))) {
         printf("%d de %s de %d\n", day, nameMoths[month - 1], year);
     } else {
         printf("Date not valid.\n");
@@ -218,54 +219,52 @@ void multiplyMatrix(int matrix1[][3], int matrix2[][3], int result[][3]) {
 }
 
 
-void generarMatrizMagica(int n) {
-    int matriz[n][n];
+void generateMagicMatrix(int n) {
+    int matrix[n][n];
     int i, j;
 
     // Inicializar todos los elementos de la matriz a 0
     for (i = 0; i < n; i++) {
         for (j = 0; j < n; j++) {
-            matriz[i][j] = 0;
+            matrix[i][j] = 0;
         }
     }
 
     // Colocar el número 1 en la posición inicial
     int num = 1;
-    int fila = n / 2;
-    int columna = n - 1;
+    int row = n / 2;
+    int column = n - 1;
 
     while (num <= n * n) {
-        if (fila == -1 && columna == n) {
-            fila = 0;
-            columna = n - 2;
-        }
-        else {
-            if (columna == n) {
-                columna = 0;
+        if (row == -1 && column == n) {
+            row = 0;
+            column = n - 2;
+        } else {
+            if (column == n) {
+                column = 0;
             }
-            if (fila < 0) {
-                fila = n - 1;
+            if (row < 0) {
+                row = n - 1;
             }
         }
 
-        if (matriz[fila][columna]) {
-            fila++;
-            columna -= 2;
+        if (matrix[row][column]) {
+            row++;
+            column -= 2;
             continue;
-        }
-        else {
-            matriz[fila][columna] = num++;
+        } else {
+            matrix[row][column] = num++;
         }
 
-        fila--;
-        columna++;
+        row--;
+        column++;
     }
 
     // Imprimir la matriz mágica generada
-    printf("Matriz Mágica de orden %d x %d:\n", n, n);
+    printf("Magic Matrix of order %d x %d:\n", n, n);
     for (i = 0; i < n; i++) {
         for (j = 0; j < n; j++) {
-            printf("%d\t", matriz[i][j]);
+            printf("%d\t", matrix[i][j]);
         }
         printf("\n");
     }
@@ -284,7 +283,7 @@ int main() {
     printf("6. Own name\n");
     printf("7. Product Point\n");
     printf("8. Multiplication of Matrices\n");
-    printf("9. Matriz Mágica\n");
+    printf("9. Magic Matrix\n");
     printf("Enter the option number: ");
     scanf("%d", &option);
 
@@ -320,7 +319,7 @@ int main() {
     switch (option) {
 
         case 1:
-            printf("Ingrese un numero: ");
+            printf("Enter a number: ");
             scanf("%d", &number);
             numberToRoman(number);
             break;
@@ -344,68 +343,64 @@ int main() {
             break;
 
         case 4:
-
             fflush(stdin);
-
             printf("Enter a date in the format dd/mm/aaaa: ");
             fgets(date, 30, stdin);
 
             describeDate(date);
             break;
 
-
         case 5:
-            printf("Ingrese un numero: ");
+            printf("Enter a number: ");
             scanf("%d", &number);
             primeFactors(number);
             break;
 
-
         case 6:
-            printf("Ingrese una cadena: ");
+            printf("Enter a string: ");
             scanf(" %99[^\n]", words);
-            printf("Cadena de Entrada: %s\n", words);
+            printf("Input String: %s\n", words);
 
             properName(words);
-            printf("Cadena de salida: %s\n", words);
+            printf("Output String: %s\n", words);
             break;
         case 7:
-            printf("\nIngrese los elementos del primer arreglo:\n");
+            printf("\nEnter the elements of the first array:\n");
             for (int i = 0; i < 3; i++) {
                 scanf("%d", &array1[i]);
             }
 
-            printf("Ingrese los elementos del segundo arreglo:\n");
+            printf("Enter the elements of the second array:\n");
             for (int i = 0; i < 3; i++) {
                 scanf("%d", &array2[i]);
             }
 
             int result1 = productPoint(array1, array2, 3);
-            printf("\nEl producto punto de los arreglos es: %d\n", result1);
+            printf("\nThe dot product of the arrays is: %d\n", result1);
             break;
 
 
         case 8:
-            printf("\nGenerando matriz 1:\n");
+            printf("\nGenerating matrix 1:\n");
             generateMatrix(matrix1, 3, 3);
             showMatrix(matrix1, 3, 3);
 
-            printf("\nGenerando matriz 2:\n");
+            printf("\nGenerating matrix 2:\n");
             generateMatrix(matrix2, 3, 3);
             showMatrix(matrix2, 3, 3);
 
             multiplyMatrix(matrix1, matrix2, result);
 
-            printf("\nResultado de la multiplicacion:\n");
+            printf("\nMultiplication result:\n");
             showMatrix(result, 3, 3);
             break;
 
         case 9:
-            printf("Ingrese el orden de la matriz: ");
+            printf("Enter the order of the matrix: ");
             scanf("%d", &orden);
 
             if (orden % 2 == 0) {
-                printf("El orden de la matriz debe ser impar.\n");
+                printf("The order of the matrix must be odd\n");
                 return 0;
             }
 
@@ -413,7 +408,7 @@ int main() {
             break;
 
         default:
-            printf("\nOpcion invalida. Por favor, seleccione una opcion valida.\n");
+            printf("\nInvalid option. Please select a valid option.\n");
             break;
     }
 
