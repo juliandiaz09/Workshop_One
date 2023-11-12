@@ -1,4 +1,4 @@
-# Install script for directory: D:/programas/CLionProyects/Workshop_One
+# Install script for directory: D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versión/Workshop_One
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "D:/programas/CLion 2023.2.2/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/programas/CLionProyects/Workshop_One/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versión/Workshop_One/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

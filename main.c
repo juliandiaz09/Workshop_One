@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
+#include <math.h>
 
 void generateMatrix(int matrix[][3], int rows, int columns) {
     srand(time(NULL));
@@ -150,17 +151,85 @@ void properName(char *string) {
     string[resultIndex] = '\0';
 }
 
+bool verifyEgolatet(int egolater) {
+    int digito = 0, aux = egolater, sum = 0;
+
+    while (aux > 0){
+        digito = aux % 10;
+        int powDigito = pow(digito, 3);
+        sum += powDigito;
+        aux /= 10;
+    }
+
+    if(egolater == sum){
+        printf("hola si es un egolatra igual que mi ex");
+        return true;
+    } else{
+        printf("Este si vale la pena cariño");
+        return false;
+    }
+}
+
+int numberDivisors(int  number){
+    int i, sum = 0;
+
+    for(i = 1; i < number; i++){
+        if((number % i) == 0){
+            sum += i;
+        }
+    }
+    return sum;
+}
+
+bool verifyFriendsNumber(int  numberOne, int numberTwo){
+    int sum = 0;
+
+    sum = numberDivisors(numberOne);
+
+    if(sum == numberTwo){
+        sum = numberDivisors(numberTwo);
+        if(sum == numberOne){
+            printf("Somos amix");
+            return true;
+        }
+    }else{
+        printf("Te odixxx");
+        return false;
+    }
+}
+
+const char* nameMoths[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                           "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+
+bool esBisiesto(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+void describeDate(const char* date) {
+    int day, month, year;
+    if (sscanf(date, "%d/%d/%d", &day, &month, &year) == 3 &&
+        month >= 1 && month <= 12 &&
+        day >= 1 && day <= (month == 2 && esBisiesto(year) ? 29 : (31 - (month - 1) % 7 % 2))) {
+        printf("%d de %s de %d\n", day, nameMoths[month - 1], year);
+    } else {
+        printf("Date not valid.\n");
+    }
+}
+
 
 int main() {
     int option;
 
-    printf("Seleccione el ejercicio a realizar:\n");
-    printf("1. Producto Punto\n");
-    printf("2. Multiplicacion de Matrices\n");
-    printf("3. Entero a Romano\n");
-    printf("4. Factores Primos\n");
-    printf("5. Nombre propio\n");
-    printf("Ingrese el numero de la opcion: ");
+    printf("Select the exercise to be performed:\n");
+    printf("1. Product Point\n");
+    printf("2. Multiplication of Matrices\n");
+    printf("3. Whole Number to Roman\n");
+    printf("4. Egomaniac Numbers\n");
+    printf("5. Friends Numbers\n");
+    printf("6. Date\n");
+    printf("7. Prime Factors\n");
+    printf("8. Own name\n");
+    printf("Enter the option number: ");
     scanf("%d", &option);
 
 
@@ -180,6 +249,13 @@ int main() {
 
     //Punto 5:
     char words[100];
+
+    //
+    int numberEgolater = 0;
+    //
+    int friendNumberOne = 0, friendNumberTwo = 0;
+
+    char date[30];
 
 
     switch (option) {
@@ -220,14 +296,43 @@ int main() {
             numberToRoman(number);
             break;
 
+
         case 4:
+            printf("\nEnter a number for verify if is egolater\n");
+            scanf("%i", &numberEgolater);
+
+            printf("\n%s", verifyEgolatet(numberEgolater) ? "True " : "False");
+            break;
+
+        case 5:
+            printf("\nEnter a number\n");
+            scanf("%d", &friendNumberOne);
+
+            printf("\nEnter a number\n");
+            scanf("%d", &friendNumberTwo);
+
+            printf("%s", verifyFriendsNumber(friendNumberOne, friendNumberTwo) ? "True" : "False");
+            break;
+
+        case 6:
+
+            fflush(stdin);
+
+            printf("Enter a date in the format dd/mm/aaaa: ");
+            fgets(date, 30, stdin);
+
+            describeDate(date);
+            break;
+
+
+        case 7:
             printf("Ingrese un numero: ");
             scanf("%d", &number);
             primeFactors(number);
             break;
 
 
-        case 5:
+        case 8:
             printf("Ingrese una cadena: ");
             scanf(" %99[^\n]", words);
             printf("Cadena de Entrada: %s\n", words);

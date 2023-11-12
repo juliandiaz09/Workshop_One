@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/programas/CLionProyects/Workshop_One/main.c" "CMakeFiles/Workshop_One.dir/main.c.obj" "gcc" "CMakeFiles/Workshop_One.dir/main.c.obj.d"
+  "D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versión/Workshop_One/main.c" "CMakeFiles/Workshop_One.dir/main.c.obj" "gcc" "CMakeFiles/Workshop_One.dir/main.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
