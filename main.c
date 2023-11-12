@@ -6,46 +6,6 @@
 #include <ctype.h>
 #include <math.h>
 
-void generateMatrix(int matrix[][3], int rows, int columns) {
-    srand(time(NULL));
-
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
-            matrix[i][j] = rand() % 10; // Genera valores aleatorios entre 0 y 9
-        }
-    }
-}
-
-void showMatrix(int matrix[][3], int rows, int columns) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-int productPoint(int array1[], int array2[], int size) {
-    int result = 0;
-
-    for (int i = 0; i < size; i++) {
-        result += array1[i] * array2[i];
-    }
-
-    return result;
-}
-
-void multiplyMatrix(int matrix1[][3], int matrix2[][3], int result[][3]) {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            result[i][j] = 0;
-            for (int k = 0; k < 3; k++) {
-                result[i][j] += matrix1[i][k] * matrix2[k][j];
-            }
-        }
-    }
-}
-
 //3.Punto: Función que convierte un valor numérico entero en su equivalente a número romano
 
 //funcion para validar si el numero esta en el rango establecido
@@ -216,50 +176,200 @@ void describeDate(const char* date) {
     }
 }
 
+void generateMatrix(int matrix[][3], int rows, int columns) {
+    srand(time(NULL));
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            matrix[i][j] = rand() % 10; // Genera valores aleatorios entre 0 y 9
+        }
+    }
+}
+
+void showMatrix(int matrix[][3], int rows, int columns) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int productPoint(int array1[], int array2[], int size) {
+    int result = 0;
+
+    for (int i = 0; i < size; i++) {
+        result += array1[i] * array2[i];
+    }
+
+    return result;
+}
+
+void multiplyMatrix(int matrix1[][3], int matrix2[][3], int result[][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < 3; k++) {
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
+        }
+    }
+
+}
+
+
+void generarMatrizMagica(int n) {
+    int matriz[n][n];
+    int i, j;
+
+    // Inicializar todos los elementos de la matriz a 0
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            matriz[i][j] = 0;
+        }
+    }
+
+    // Colocar el número 1 en la posición inicial
+    int num = 1;
+    int fila = n / 2;
+    int columna = n - 1;
+
+    while (num <= n * n) {
+        if (fila == -1 && columna == n) {
+            fila = 0;
+            columna = n - 2;
+        }
+        else {
+            if (columna == n) {
+                columna = 0;
+            }
+            if (fila < 0) {
+                fila = n - 1;
+            }
+        }
+
+        if (matriz[fila][columna]) {
+            fila++;
+            columna -= 2;
+            continue;
+        }
+        else {
+            matriz[fila][columna] = num++;
+        }
+
+        fila--;
+        columna++;
+    }
+
+    // Imprimir la matriz mágica generada
+    printf("Matriz Mágica de orden %d x %d:\n", n, n);
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            printf("%d\t", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 
 int main() {
     int option;
 
     printf("Select the exercise to be performed:\n");
-    printf("1. Product Point\n");
-    printf("2. Multiplication of Matrices\n");
-    printf("3. Whole Number to Roman\n");
-    printf("4. Egomaniac Numbers\n");
-    printf("5. Friends Numbers\n");
-    printf("6. Date\n");
-    printf("7. Prime Factors\n");
-    printf("8. Own name\n");
+    printf("1. Whole Number to Roman\n");
+    printf("2. Egomaniac Numbers\n");
+    printf("3. Friends Numbers\n");
+    printf("4. Date\n");
+    printf("5. Prime Factors\n");
+    printf("6. Own name\n");
+    printf("7. Product Point\n");
+    printf("8. Multiplication of Matrices\n");
+    printf("9. Matriz Mágica\n");
     printf("Enter the option number: ");
     scanf("%d", &option);
 
 
     //Variables
 
-    //Punto1:
-    int array1[3];
-    int array2[3];
-
-    //Punto2:
-    int matrix1[3][3];
-    int matrix2[3][3];
-    int result[3][3];
-
-    //Punto 3 y 4:
+    //Punto 1 y 2:
     int number;
 
-    //Punto 5:
+    //Punto 3:
     char words[100];
 
-    //
+    //4
     int numberEgolater = 0;
-    //
+    //5
     int friendNumberOne = 0, friendNumberTwo = 0;
 
     char date[30];
 
+    //Punto7:
+    int array1[3];
+    int array2[3];
+
+    //Punto8:
+    int matrix1[3][3];
+    int matrix2[3][3];
+    int result[3][3];
+
+    //Punto 9:
+    int orden;
+
 
     switch (option) {
+
         case 1:
+            printf("Ingrese un numero: ");
+            scanf("%d", &number);
+            numberToRoman(number);
+            break;
+
+
+        case 2:
+            printf("\nEnter a number for verify if is egolater\n");
+            scanf("%i", &numberEgolater);
+
+            printf("\n%s", verifyEgolatet(numberEgolater) ? "True " : "False");
+            break;
+
+        case 3:
+            printf("\nEnter a number\n");
+            scanf("%d", &friendNumberOne);
+
+            printf("\nEnter a number\n");
+            scanf("%d", &friendNumberTwo);
+
+            printf("%s", verifyFriendsNumber(friendNumberOne, friendNumberTwo) ? "True" : "False");
+            break;
+
+        case 4:
+
+            fflush(stdin);
+
+            printf("Enter a date in the format dd/mm/aaaa: ");
+            fgets(date, 30, stdin);
+
+            describeDate(date);
+            break;
+
+
+        case 5:
+            printf("Ingrese un numero: ");
+            scanf("%d", &number);
+            primeFactors(number);
+            break;
+
+
+        case 6:
+            printf("Ingrese una cadena: ");
+            scanf(" %99[^\n]", words);
+            printf("Cadena de Entrada: %s\n", words);
+
+            properName(words);
+            printf("Cadena de salida: %s\n", words);
+            break;
+        case 7:
             printf("\nIngrese los elementos del primer arreglo:\n");
             for (int i = 0; i < 3; i++) {
                 scanf("%d", &array1[i]);
@@ -275,7 +385,7 @@ int main() {
             break;
 
 
-        case 2:
+        case 8:
             printf("\nGenerando matriz 1:\n");
             generateMatrix(matrix1, 3, 3);
             showMatrix(matrix1, 3, 3);
@@ -290,55 +400,16 @@ int main() {
             showMatrix(result, 3, 3);
             break;
 
-        case 3:
-            printf("Ingrese un numero: ");
-            scanf("%d", &number);
-            numberToRoman(number);
-            break;
+        case 9:
+            printf("Ingrese el orden de la matriz: ");
+            scanf("%d", &orden);
 
+            if (orden % 2 == 0) {
+                printf("El orden de la matriz debe ser impar.\n");
+                return 0;
+            }
 
-        case 4:
-            printf("\nEnter a number for verify if is egolater\n");
-            scanf("%i", &numberEgolater);
-
-            printf("\n%s", verifyEgolatet(numberEgolater) ? "True " : "False");
-            break;
-
-        case 5:
-            printf("\nEnter a number\n");
-            scanf("%d", &friendNumberOne);
-
-            printf("\nEnter a number\n");
-            scanf("%d", &friendNumberTwo);
-
-            printf("%s", verifyFriendsNumber(friendNumberOne, friendNumberTwo) ? "True" : "False");
-            break;
-
-        case 6:
-
-            fflush(stdin);
-
-            printf("Enter a date in the format dd/mm/aaaa: ");
-            fgets(date, 30, stdin);
-
-            describeDate(date);
-            break;
-
-
-        case 7:
-            printf("Ingrese un numero: ");
-            scanf("%d", &number);
-            primeFactors(number);
-            break;
-
-
-        case 8:
-            printf("Ingrese una cadena: ");
-            scanf(" %99[^\n]", words);
-            printf("Cadena de Entrada: %s\n", words);
-
-            properName(words);
-            printf("Cadena de salida: %s\n", words);
+            generarMatrizMagica(orden);
             break;
 
         default:
