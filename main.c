@@ -10,7 +10,7 @@
 
 //funcion para validar si el numero esta en el rango establecido
 bool validNumber(int number) {
-    return number >= 1 && number <= 3000;
+    return number >= 1 && number <= 3999;
 }
 
 void numberToRoman(int number) {
@@ -273,7 +273,7 @@ void generateMagicMatrix(int n) {
 
 int main() {
     int option;
-
+    do {
     printf("Select the exercise to be performed:\n");
     printf("1. Whole Number to Roman\n");
     printf("2. Egomaniac Numbers\n");
@@ -284,6 +284,7 @@ int main() {
     printf("7. Product Point\n");
     printf("8. Multiplication of Matrices\n");
     printf("9. Magic Matrix\n");
+    printf("10. Exit\n");
     printf("Enter the option number: ");
     scanf("%d", &option);
 
@@ -411,6 +412,6 @@ int main() {
             printf("\nInvalid option. Please select a valid option.\n");
             break;
     }
-
+    } while (option != 10);
     return 0;
 }
