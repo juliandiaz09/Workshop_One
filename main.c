@@ -10,7 +10,7 @@
 
 //funcion para validar si el numero esta en el rango establecido
 bool validNumber(int number) {
-    return number >= 1 && number <= 3999;
+    return number >= 1 && number <= 3000;
 }
 
 void numberToRoman(int number) {
@@ -177,25 +177,7 @@ void describeDate(const char *date) {
     }
 }
 
-void generateMatrix(int matrix[][3], int rows, int columns) {
-    srand(time(NULL));
-
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
-            matrix[i][j] = rand() % 10; // Genera valores aleatorios entre 0 y 9
-        }
-    }
-}
-
-void showMatrix(int matrix[][3], int rows, int columns) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
-}
-
+//7.
 int productPoint(int array1[], int array2[], int size) {
     int result = 0;
 
@@ -204,6 +186,18 @@ int productPoint(int array1[], int array2[], int size) {
     }
 
     return result;
+}
+
+//8.
+void inputMatrix(int matrix[][3]) {
+    int side;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("Enter the element at position [%d][%d]: ",i,j);
+            scanf("%d", &side);
+            matrix[i][j]=side;
+        }
+    }
 }
 
 void multiplyMatrix(int matrix1[][3], int matrix2[][3], int result[][3]) {
@@ -215,10 +209,9 @@ void multiplyMatrix(int matrix1[][3], int matrix2[][3], int result[][3]) {
             }
         }
     }
-
 }
 
-
+//9
 void generateMagicMatrix(int n) {
     int matrix[n][n];
     int i, j;
@@ -268,12 +261,16 @@ void generateMagicMatrix(int n) {
         }
         printf("\n");
     }
+    printf("\n \n");
 }
+
 
 
 int main() {
     int option;
     do {
+        printf("\n");
+        printf("\n");
     printf("Select the exercise to be performed:\n");
     printf("1. Whole Number to Roman\n");
     printf("2. Egomaniac Numbers\n");
@@ -309,9 +306,7 @@ int main() {
     int array2[3];
 
     //Punto8:
-    int matrix1[3][3];
-    int matrix2[3][3];
-    int result[3][3];
+    int matrix1[3][3], matrix2[3][3], result[3][3];
 
     //Punto 9:
     int orden;
@@ -368,11 +363,13 @@ int main() {
         case 7:
             printf("\nEnter the elements of the first array:\n");
             for (int i = 0; i < 3; i++) {
+                printf("Enter the element at position [%d]: ",i);
                 scanf("%d", &array1[i]);
             }
 
             printf("Enter the elements of the second array:\n");
             for (int i = 0; i < 3; i++) {
+                printf("Enter the element at position [%d]: ",i);
                 scanf("%d", &array2[i]);
             }
 
@@ -382,18 +379,21 @@ int main() {
 
 
         case 8:
-            printf("\nGenerating matrix 1:\n");
-            generateMatrix(matrix1, 3, 3);
-            showMatrix(matrix1, 3, 3);
+            printf("Enter the first array:\n");
+            inputMatrix(matrix1);
 
-            printf("\nGenerating matrix 2:\n");
-            generateMatrix(matrix2, 3, 3);
-            showMatrix(matrix2, 3, 3);
+            printf("Enter the second array:\n");
+            inputMatrix(matrix2);
 
             multiplyMatrix(matrix1, matrix2, result);
 
-            printf("\nMultiplication result:\n");
-            showMatrix(result, 3, 3);
+            printf("Multiplication result:\n");
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    printf("%d ", result[i][j]);  // Corrección en la impresión de los elementos
+                }
+                printf("\n");
+            }
             break;
 
         case 9:
@@ -401,11 +401,11 @@ int main() {
             scanf("%d", &orden);
 
             if (orden % 2 == 0) {
-                printf("The order of the matrix must be odd\n");
-                return 0;
+                printf("The order of the matrix must be odd\n");//tiene que ser impar
+                break;
             }
 
-            generarMatrizMagica(orden);
+            generateMagicMatrix(orden);
             break;
 
         default:
