@@ -6,13 +6,13 @@
 #include <ctype.h>
 #include <math.h>
 
-//3.Punto: Función que convierte un valor numérico entero en su equivalente a número romano
 
 //funcion para validar si el numero esta en el rango establecido
 bool validNumber(int number) {
     return number >= 1 && number <= 3000;
 }
 
+//Punto 1
 void numberToRoman(int number) {
     int number2 = number;
     if (!validNumber(number)) {
@@ -46,8 +46,7 @@ void numberToRoman(int number) {
 
 
 
-// Punto 4:Dado un número de entrada, hallar su factores
-//primos y expresarlo en formato de potencias.
+// Punto 2
 
 void primeFactors(int number) {
     int factor = 2; // Inicializamos el factor en 2 (el primer número primo).
@@ -79,7 +78,7 @@ void primeFactors(int number) {
     printf("\n");
 }
 
-//Punto 5: Nombre Propio
+//Punto 3
 
 void properName(char *string) {
     // Comprobamos si la cadena está vacía o nula
@@ -112,6 +111,7 @@ void properName(char *string) {
     string[resultIndex] = '\0';
 }
 
+//4
 bool verifyEgolatet(int egolater) {
     int digito = 0, aux = egolater, sum = 0;
 
@@ -123,13 +123,12 @@ bool verifyEgolatet(int egolater) {
     }
 
     if (egolater == sum) {
-        printf("Hello, it is an egomaniac number just like my ex");
         return true;
     } else {
-        printf("This one is worth it, darling");
         return false;
     }
 }
+
 
 int numberDivisors(int number) {
     int i, sum = 0;
@@ -142,6 +141,7 @@ int numberDivisors(int number) {
     return sum;
 }
 
+//5
 bool verifyFriendsNumber(int numberOne, int numberTwo) {
     int sum = 0;
 
@@ -150,15 +150,14 @@ bool verifyFriendsNumber(int numberOne, int numberTwo) {
     if (sum == numberTwo) {
         sum = numberDivisors(numberTwo);
         if (sum == numberOne) {
-            printf("We are friends");
             return true;
         }
     } else {
-        printf("I hate you");
         return false;
     }
 }
 
+//6
 const char *nameMoths[] = {"January", "February", "March", "April", "May", "June",
                            "July", "August", "September", "October", "November", "December"};
 
@@ -273,18 +272,17 @@ int main() {
         printf("\n");
     printf("Select the exercise to be performed:\n");
     printf("1. Whole Number to Roman\n");
-    printf("2. Egomaniac Numbers\n");
-    printf("3. Friends Numbers\n");
-    printf("4. Date\n");
-    printf("5. Prime Factors\n");
-    printf("6. Own name\n");
+    printf("2. Prime Factors\n");
+    printf("3. Own name\n");
+    printf("4. Egomaniac Numbers\n");
+    printf("5. Friends Numbers\n");
+    printf("6. Date\n");
     printf("7. Product Point\n");
     printf("8. Multiplication of Matrices\n");
     printf("9. Magic Matrix\n");
     printf("10. Exit\n");
     printf("Enter the option number: ");
     scanf("%d", &option);
-
 
     //Variables
 
@@ -294,11 +292,13 @@ int main() {
     //Punto 3:
     char words[100];
 
-    //4
+    //Punto 4
     int numberEgolater = 0;
-    //5
+
+    //Punto 5
     int friendNumberOne = 0, friendNumberTwo = 0;
 
+    //Punto 6
     char date[30];
 
     //Punto7:
@@ -320,39 +320,13 @@ int main() {
             numberToRoman(number);
             break;
 
-
         case 2:
-            printf("\nEnter a number for verify if is egolater\n");
-            scanf("%i", &numberEgolater);
-
-            printf("\n%s", verifyEgolatet(numberEgolater) ? "True " : "False");
-            break;
-
-        case 3:
-            printf("\nEnter a number\n");
-            scanf("%d", &friendNumberOne);
-
-            printf("\nEnter a number\n");
-            scanf("%d", &friendNumberTwo);
-
-            printf("%s", verifyFriendsNumber(friendNumberOne, friendNumberTwo) ? "True" : "False");
-            break;
-
-        case 4:
-            fflush(stdin);
-            printf("Enter a date in the format dd/mm/aaaa: ");
-            fgets(date, 30, stdin);
-
-            describeDate(date);
-            break;
-
-        case 5:
             printf("Enter a number: ");
             scanf("%d", &number);
             primeFactors(number);
             break;
 
-        case 6:
+        case 3:
             printf("Enter a string: ");
             scanf(" %99[^\n]", words);
             printf("Input String: %s\n", words);
@@ -360,6 +334,33 @@ int main() {
             properName(words);
             printf("Output String: %s\n", words);
             break;
+
+
+        case 4:
+            printf("\nEnter a number for verify if is egolater\n");
+            scanf("%i", &numberEgolater);
+
+            printf("\n%s", verifyEgolatet(numberEgolater) ? "This number is egomaniacal" : "This number is not egomaniacal");
+            break;
+
+        case 5:
+            printf("\nEnter a number\n");
+            scanf("%d", &friendNumberOne);
+
+            printf("\nEnter a number\n");
+            scanf("%d", &friendNumberTwo);
+
+            printf("%s", verifyFriendsNumber(friendNumberOne, friendNumberTwo) ? "These numbers are enemies" : "These numbers are not enemies");
+            break;
+
+        case 6:
+            fflush(stdin);
+            printf("Enter a date in the format dd/mm/aaaa: ");
+            fgets(date, 30, stdin);
+
+            describeDate(date);
+            break;
+
         case 7:
             printf("\nEnter the elements of the first array:\n");
             for (int i = 0; i < 3; i++) {
