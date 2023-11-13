@@ -6,13 +6,12 @@
 #include <ctype.h>
 #include <math.h>
 
-
+//Punto 1
 //funcion para validar si el numero esta en el rango establecido
 bool validNumber(int number) {
     return number >= 1 && number <= 3000;
 }
 
-//Punto 1
 void numberToRoman(int number) {
     int number2 = number;
     if (!validNumber(number)) {
@@ -20,7 +19,6 @@ void numberToRoman(int number) {
         return;
     }
 
-    // Arrays para los símbolos romanos y sus valores correspondientes
     const char *roman[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
     int romanValues[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
 
@@ -32,7 +30,6 @@ void numberToRoman(int number) {
         for (int j = 0; j < 13; j++) {
             if (number >= romanValues[j]) {
                 while (number >= romanValues[j]) {
-                    // Agregar el símbolo romano correspondiente al número
                     strcat(romanNumber, roman[j]);
                     number -= romanValues[j];
                 }
@@ -40,7 +37,6 @@ void numberToRoman(int number) {
         }
     }
 
-    // Imprimir el número romano
     printf("Roman number of %d is %s\n", number2, romanNumber);
 }
 
@@ -49,30 +45,29 @@ void numberToRoman(int number) {
 // Punto 2
 
 void primeFactors(int number) {
-    int factor = 2; // Inicializamos el factor en 2 (el primer número primo).
+    int factor = 2;
     int exponent = 0;
 
     printf("%d = ", number);
 
     while (number > 1) {
-        if (number % factor == 0) { // Vemos si el factor actual divide al número.
+        if (number % factor == 0) {
             exponent++;
             number /= factor;
         } else {
-            if (exponent > 0) { // Si había un exponente mayor que 0, significa que encontramos un factor primo.
-                printf("%d^%d", factor, exponent); // Imprimimos el factor primo y su exponente.
+            if (exponent > 0) {
+                printf("%d^%d", factor, exponent);
                 if (number > 1) {
-                    printf(" * "); // Si hay más factores por venir, imprimimos un asterisco y un espacio.
+                    printf(" * ");
                 }
-                exponent = 0; // Reiniciamos el exponente para el siguiente factor.
+                exponent = 0;
             }
-            factor++; // Pasamos al siguiente número como posible factor primo.
+            factor++;
         }
     }
 
-    if (exponent >
-        0) { // Al final, si todavía tenemos un exponente mayor que 0, significa que el último factor era primo.
-        printf("%d^%d", factor, exponent); // Imprimimos el último factor primo y su exponente.
+    if (exponent >0) {
+        printf("%d^%d", factor, exponent);
     }
 
     printf("\n");
@@ -81,33 +76,31 @@ void primeFactors(int number) {
 //Punto 3
 
 void properName(char *string) {
-    // Comprobamos si la cadena está vacía o nula
+
     if (string == NULL || strlen(string) == 0) {
         return;
     }
 
     int length = strlen(string);
     int isFirstLetter = 1;
-    int resultIndex = 0; // Índice para la cadena resultante
+    int resultIndex = 0;
 
     for (int i = 0; i < length; i++) {
         string[i] = tolower(string[i]);
 
         if (isspace(string[i])) {
-            isFirstLetter = 1; //Si estamos en un espacio vacio, indicamos que la siguiente es la primera letra
+            isFirstLetter = 1;
         } else if (isFirstLetter) {
             string[i] = toupper(string[i]);
             isFirstLetter = 0;
         }
 
-        // Si no es un espacio o si no es un espacio adyacente a otro espacio, copia el carácter a la cadena resultante
         if (!isspace(string[i]) || (i > 0 && !isspace(string[i - 1]))) {
             string[resultIndex] = string[i];
             resultIndex++;
         }
     }
-
-    // Agrega un carácter nulo al final para terminar la cadena
+    
     string[resultIndex] = '\0';
 }
 

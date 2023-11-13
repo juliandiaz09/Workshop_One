@@ -1,4 +1,4 @@
-# Install script for directory: D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versión/Workshop_One
+# Install script for directory: D:/University/7 SEMESTRE/Programacion III/C/Workshop_One
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versión/Workshop_One/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/University/7 SEMESTRE/Programacion III/C/Workshop_One/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

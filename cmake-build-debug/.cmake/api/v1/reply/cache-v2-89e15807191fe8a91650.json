@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/University/7 SEMESTRE/Programacion III/C/Segunda_Versi\u00f3n/Workshop_One/cmake-build-debug"
+			"value" : "d:/University/7 SEMESTRE/Programacion III/C/Workshop_One/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -475,7 +475,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versi\u00f3n/Workshop_One/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "D:/University/7 SEMESTRE/Programacion III/C/Workshop_One/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -547,7 +547,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versi\u00f3n/Workshop_One"
+			"value" : "D:/University/7 SEMESTRE/Programacion III/C/Workshop_One"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1167,7 +1167,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versi\u00f3n/Workshop_One/cmake-build-debug"
+			"value" : "D:/University/7 SEMESTRE/Programacion III/C/Workshop_One/cmake-build-debug"
 		},
 		{
 			"name" : "Workshop_One_IS_TOP_LEVEL",
@@ -1191,7 +1191,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/University/7 SEMESTRE/Programacion III/C/Segunda_Versi\u00f3n/Workshop_One"
+			"value" : "D:/University/7 SEMESTRE/Programacion III/C/Workshop_One"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
