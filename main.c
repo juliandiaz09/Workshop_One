@@ -266,7 +266,8 @@ void generateMagicMatrix(int n) {
 
 
 int main() {
-    int option;
+    int option,c;
+    char buffer[50];
     do {
         printf("\n");
         printf("\n");
@@ -281,9 +282,12 @@ int main() {
     printf("8. Multiplication of Matrices\n");
     printf("9. Magic Matrix\n");
     printf("10. Exit\n");
-    printf("Enter the option number: ");
-    scanf("%d", &option);
-
+        printf("Enter the option number: ");
+        fgets(buffer, sizeof buffer, stdin);
+        if (sscanf(buffer, "%d", &option) != 1) {
+            printf("Invalid input. Please enter a number.\n");
+            continue;
+        }
     //Variables
 
     //Punto 1 y 2:
@@ -318,12 +322,14 @@ int main() {
             printf("Enter a number: ");
             scanf("%d", &number);
             numberToRoman(number);
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
 
         case 2:
             printf("Enter a number: ");
             scanf("%d", &number);
             primeFactors(number);
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
 
         case 3:
@@ -333,6 +339,7 @@ int main() {
 
             properName(words);
             printf("Output String: %s\n", words);
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
 
 
@@ -341,7 +348,9 @@ int main() {
             scanf("%i", &numberEgolater);
 
             printf("\n%s", verifyEgolatet(numberEgolater) ? "This number is egomaniacal" : "This number is not egomaniacal");
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
+
 
         case 5:
             printf("\nEnter a number\n");
@@ -351,6 +360,7 @@ int main() {
             scanf("%d", &friendNumberTwo);
 
             printf("%s", verifyFriendsNumber(friendNumberOne, friendNumberTwo) ? "These numbers are enemies" : "These numbers are not enemies");
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
 
         case 6:
@@ -359,6 +369,7 @@ int main() {
             fgets(date, 30, stdin);
 
             describeDate(date);
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
 
         case 7:
@@ -376,6 +387,7 @@ int main() {
 
             int result1 = productPoint(array1, array2, 3);
             printf("\nThe dot product of the arrays is: %d\n", result1);
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
 
 
@@ -395,6 +407,7 @@ int main() {
                 }
                 printf("\n");
             }
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
 
         case 9:
@@ -407,6 +420,7 @@ int main() {
             }
 
             generateMagicMatrix(orden);
+            while ((c = getchar()) != '\n' && c != EOF) { }  // Limpiar el buffer de entrada
             break;
 
         default:
